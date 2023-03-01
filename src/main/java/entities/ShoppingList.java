@@ -17,12 +17,7 @@ public class ShoppingList {
 	public ShoppingList(Long id, String name) {
 		this.id = id;
 		this.name = name;
-		
-		
-	this.daoArticle = new DaoArticle();
-		
-	
+		this.daoArticle = new DaoArticle();
 	}
-	
 
 }
