@@ -12,19 +12,8 @@ public class DaoArticle implements DaoInterface<Article> {
 	/* private static DaoArticle instance; */
 	List<Article> articles = new ArrayList<>();
 	
-	public DaoArticle() {
-	}
-
-	/*
-	 * private DaoArticle() { articles.add(new Article(1L , "Olives", 20));
-	 * articles.add(new Article(2L , "Citron confit", 5)); articles.add(new
-	 * Article(3L , "Côtelette d'Agneau",8 )); }
-	 * 
-	 * public static DaoArticle getInstance() { if(instance == null) { instance =
-	 * new DaoArticle();
-	 * 
-	 * } return instance; }
-	 */
+	public DaoArticle() {};
+	
 	@Override
 	public List<Article> getAll() {
 
@@ -38,7 +27,7 @@ public class DaoArticle implements DaoInterface<Article> {
 				return article;
 			}
 		}
-		throw new IllegalArgumentException ("Article non trouvé");
+		throw new IllegalArgumentException ("Article not found");
 	}
 
 	@Override
@@ -47,6 +36,8 @@ public class DaoArticle implements DaoInterface<Article> {
 		if (existingArticle != null) {
 			existingArticle.setName(objectUpdated.getName());
 			existingArticle.setQuantity(objectUpdated.getQuantity());
+		}else {
+			throw new IllegalArgumentException("Article not found");
 		}
 	}
 
@@ -58,7 +49,12 @@ public class DaoArticle implements DaoInterface<Article> {
 
 	@Override
 	public void delete(long id) {
-		articles.removeIf(article -> article.getId().equals(id));
+		Article existingArticle = get(id);
+		if (existingArticle != null) {
+			articles.removeIf(article -> article.getId().equals(id));
+		}else {
+			throw new IllegalArgumentException("Article not found");
+		}
 
 	}
 

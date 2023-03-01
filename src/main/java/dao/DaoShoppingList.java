@@ -35,7 +35,7 @@ public class DaoShoppingList implements DaoInterface<ShoppingList> {
                 return list;
             }
         }
-        return null;
+        throw new IllegalArgumentException("ShoppingList not found");
     }
 
 	@Override
@@ -43,9 +43,8 @@ public class DaoShoppingList implements DaoInterface<ShoppingList> {
         ShoppingList existingShoppingList = get(objectUpdated.getId());
         if (existingShoppingList != null && objectUpdated != null) {
         	existingShoppingList.setName(objectUpdated.getName());
-			/* existingShoppingList.setList(objectUpdated.getList()); */
         } else {
-            throw new IllegalArgumentException("Impossible de mettre à jour la liste de courses");
+            throw new IllegalArgumentException("ShoppingList not found");
         }
     }
     
@@ -58,7 +57,12 @@ public class DaoShoppingList implements DaoInterface<ShoppingList> {
 	
 	@Override
     public void delete(long id) {
-		shoppingLists.removeIf(shoppingList -> shoppingList.getId().equals(id));
+        ShoppingList existingShoppingList = get(id);
+        if (existingShoppingList != null) {
+			shoppingLists.removeIf(shoppingList -> shoppingList.getId().equals(id));
+		}else {
+	        throw new IllegalArgumentException("ShoppingList not found");
+		}
     }
 
 	
