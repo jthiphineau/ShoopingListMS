@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
 import dao.DaoShoppingList;
-import entities.Article;
 import entities.ShoppingList;
 
 @RestController
