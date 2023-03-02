@@ -3,7 +3,7 @@ package dao;
 import java.util.ArrayList;
 import java.util.List;
 
-import entities.Article;
+
 import entities.ShoppingList;
 
 public class DaoShoppingList implements DaoInterface<ShoppingList> {

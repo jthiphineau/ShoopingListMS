@@ -1,6 +1,6 @@
 package entities;
 
-import java.util.ArrayList;
+
 
 import dao.DaoArticle;
 
