@@ -9,9 +9,11 @@ import entities.Article;
 
 public class DaoArticle implements DaoInterface<Article> {
 	/* private static DaoArticle instance; */
-	List<Article> articles = new ArrayList<>();
+	private List<Article> articles;
 	
-	public DaoArticle() {};
+	public DaoArticle() {
+		this.articles = new ArrayList<Article>();
+	};
 	
 	@Override
 	public List<Article> getAll() {
