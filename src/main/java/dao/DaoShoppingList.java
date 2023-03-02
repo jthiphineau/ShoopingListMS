@@ -12,7 +12,6 @@ public class DaoShoppingList implements DaoInterface<ShoppingList> {
 	
 	private DaoShoppingList() {
 		shoppingLists.add(new ShoppingList(10L,"TheFirst"));
-		
 	}
 
 	public static DaoShoppingList getInstance() {
@@ -50,7 +49,7 @@ public class DaoShoppingList implements DaoInterface<ShoppingList> {
     
 	@Override
     public void create(ShoppingList newObject) {
-        shoppingLists.add(newObject);
+        this.shoppingLists.add(newObject);
     }
 
 	
